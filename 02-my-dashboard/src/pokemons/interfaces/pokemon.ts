@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 export interface Pokemon {
   abilities: Ability[];
   base_experience: number;
