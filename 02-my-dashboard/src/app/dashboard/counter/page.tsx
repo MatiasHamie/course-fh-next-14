@@ -1,4 +1,4 @@
-import { CartCounter } from "@/components/components";
+import { CartCounter } from "@/shopping-cart/components";
 
 // Metadata no funciona en client components
 export const metadata = {
