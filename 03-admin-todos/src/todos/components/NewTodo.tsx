@@ -3,13 +3,14 @@
 import { FormEvent, useState } from "react";
 import { IoTrashOutline } from "react-icons/io5";
 
-// import * as todos from "@/todos/helpers/todos";
+import * as todos from "@/todos/helpers/todos";
 
 // import { useRouter } from "next/navigation";
 import { addTodo, deleteCompleted } from "../actions/todo-actions";
+import { useRouter } from "next/navigation";
 
 export const NewTodo = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const [description, setDescription] = useState("");
 
   const onSubmit = async (e: FormEvent) => {
@@ -17,10 +18,10 @@ export const NewTodo = () => {
 
     if (description.trim().length === 0) return;
 
-    // await todos.createTodo(description);
-    await addTodo(description);
+    await todos.createTodo(description);
+    // await addTodo(description);
     setDescription("");
-    // router.refresh();
+    router.refresh();
   };
 
   const onDeleteCompleted = async () => {
