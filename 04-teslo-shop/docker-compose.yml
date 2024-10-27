@@ -1,0 +1,14 @@
+version: "3.8" # specify docker-compose version
+
+services:
+  postgres-db: # name of the service
+    image: postgres:15.3 # specify image to build container from
+    restart: always # restart the container if it fails
+    environment: # environment variables
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
+    volumes:
+      - ./postgres:/var/lib/postgresql/data # crea un volumen alojado en ./postgres en este proyecto, y lo enlaza con el directorio /var/lib/postgresql/data en el contenedor
+    ports:
+      - "5432:5432" # mapea el puerto 5432 del contenedor al puerto 5432 del host
