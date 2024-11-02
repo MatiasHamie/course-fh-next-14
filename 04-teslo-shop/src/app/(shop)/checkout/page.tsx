@@ -1,4 +1,4 @@
-import { QuantitySelector, Title } from "@/components";
+import { Title } from "@/components";
 import { initialData } from "@/seed/seed";
 import Image from "next/image";
 import Link from "next/link";
@@ -76,7 +76,8 @@ export default function CheckoutPage() {
             <div className="mt-5 mb-2 w-full">
               <p className="mb-5">
                 <span className="text-xs">
-                  Al hacer click en "Confirmar orden", aceptas nuestros{" "}
+                  Al hacer click en &quot;Confirmar orden&quot;, aceptas
+                  nuestros{" "}
                   <a href="#" className="underline">
                     términos y condiciones
                   </a>{" "}

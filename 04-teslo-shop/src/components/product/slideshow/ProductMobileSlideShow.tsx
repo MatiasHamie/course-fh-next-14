@@ -7,7 +7,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 
 import "./slideshow.css";
-import { Autoplay, FreeMode, Navigation, Pagination } from "swiper/modules";
+import { Autoplay, FreeMode, Pagination } from "swiper/modules";
 import Image from "next/image";
 
 interface Props {
