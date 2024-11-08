@@ -1,12 +1,23 @@
 "use client";
 
 import { titleFont } from "@/config/fonts";
-import { useUIStore } from "@/store";
+import { useCartStore, useUIStore } from "@/store";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { IoCartOutline, IoSearchOutline } from "react-icons/io5";
 
 export const TopMenu = () => {
   const openSideMenu = useUIStore((state) => state.openSideMenu);
+  const totalItemsInCart = useCartStore((state) => state.getTotalItems());
+
+  // Esto es porque el componente se renderiza antes de que se cargue el estado
+  // entonces next tira error de que no coincide lo q armo cuando fue server side
+  // con lo que sale del client side
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+  }, []);
 
   return (
     <nav className="flex px-5 justify-between items-center w-full">
@@ -45,11 +56,19 @@ export const TopMenu = () => {
           <IoSearchOutline className="w-5 h-5" />
         </Link>
 
-        <Link href="/cart" className="mx-2">
+        {/* La condición que tiene agregado "loaded", es porque si el carrito de compras esta vacio
+          pero en el client side esta con items, no coinciden, y pasa lo de siempre
+          que si no coincide lo del servidor vs lo del cliente, tira error  */}
+        <Link
+          href={totalItemsInCart === 0 && loaded ? "/empty" : "/cart"}
+          className="mx-2"
+        >
           <div className="relative">
-            <span className=" -right-2 absolute text-xs rounded-full px-1 font-bold -top-2 bg-blue-700 text-white">
-              2
-            </span>
+            {loaded && totalItemsInCart > 0 && (
+              <span className="fade-in absolute -top-2 -right-2 bg-blue-500 text-white rounded-full text-xs px-1">
+                {totalItemsInCart}
+              </span>
+            )}
 
             <IoCartOutline className="w-5 h-5" />
           </div>
