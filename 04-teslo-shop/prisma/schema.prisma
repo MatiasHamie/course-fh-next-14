@@ -66,6 +66,7 @@ model ProductImage {
   id Int @id @default(autoincrement()) 
   url String
 
+  // Relaciones
   product Product @relation(fields:[productId], references: [id])
   productId String
 }
@@ -78,4 +79,33 @@ model User {
   password String
   role Role @default(user)
   image String?
+
+  // Relaciones
+  address UserAddress?
+}
+
+model Country {
+  id String @id @default(uuid())
+  name String
+
+  // Relaciones
+  UserAddress UserAddress[]
+}
+
+model UserAddress {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  address String
+  address2 String?
+  city String
+  phone String
+  postalCode String
+  
+  // Relaciones
+  country Country @relation(fields: [countryId], references: [id])
+  countryId String
+
+  user User @relation(fields: [userId], references: [id])
+  userId String @unique
 }

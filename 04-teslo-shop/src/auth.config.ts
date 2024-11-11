@@ -12,7 +12,10 @@ export const authConfig: NextAuthConfig = {
     newUser: "/auth/new-account",
   },
   callbacks: {
-    authorized({ auth, request: { nextUrl } }) {
+    // ver en la documentación de next-auth para más info del middleware
+    // esto va a ser llamado en cada request
+    // vinculado con el middleware, creado en src/middleware.ts
+    authorized({ auth }) {
       console.log({ auth });
       return true;
     },
