@@ -49,10 +49,10 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
   }, [address, reset]);
 
   const onSubmit = (data: FormInputs) => {
-    setAddress(data);
-
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { rememberAddress, ...restAddress } = data;
+
+    setAddress(restAddress);
 
     if (data.rememberAddress) {
       setUserAddress(restAddress, session!.user!.id);
@@ -60,7 +60,7 @@ export const AddressForm = ({ countries, userStoredAddress = {} }: Props) => {
       deleteUserAddress(session!.user!.id);
     }
 
-    router.push("/shop/checkout");
+    router.push("/checkout");
   };
 
   return (

@@ -7,3 +7,6 @@ export { getCountries } from "./country/get-countries";
 export { setUserAddress } from "./address/set-user-address";
 export { deleteUserAddress } from "./address/delete-user-address";
 export { getUserAddress } from "./address/get-user-address";
+export { placeOrder } from "./order/place-order";
+export { getOrderByID } from "./order/get-order-by-id";
+export { getOrdersByUser } from "./order/get-orders-by-user";
