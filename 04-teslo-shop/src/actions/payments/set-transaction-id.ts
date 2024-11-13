@@ -24,6 +24,7 @@ export const setTransactionId = async (
     console.log(updatedOrder);
     return { ok: true, order: updatedOrder };
   } catch (error) {
+    console.log(error);
     return {
       ok: false,
       message: "No se pudo actualizar el ID de la transaction",

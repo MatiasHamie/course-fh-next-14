@@ -1,6 +1,5 @@
 "use server";
 import prisma from "@/source/lib/prisma";
-import { create } from "zustand";
 import bcryptjs from "bcryptjs";
 
 export const registerUser = async (
@@ -29,6 +28,7 @@ export const registerUser = async (
       message: "usuario creado correctamente",
     };
   } catch (error) {
+    console.log(error);
     return {
       ok: false,
       message: "no se pudo crear el usuario",

@@ -1,4 +1,4 @@
-export const dynamic = true; // para q siempre se actualice cuando entre el user
+export const dynamic = "force-dynamic"; // para q siempre se actualice cuando entre el user
 
 // https://tailwindcomponents.com/component/hoverable-table
 import { getPaginatedUsers } from "@/actions";

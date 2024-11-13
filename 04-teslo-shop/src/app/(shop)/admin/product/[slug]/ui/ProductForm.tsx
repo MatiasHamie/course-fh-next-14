@@ -5,7 +5,7 @@ import { ProductImage as ProductWithImage } from "@/components";
 import { Category, Product } from "@/interfaces";
 import { ProductImage } from "@prisma/client";
 import clsx from "clsx";
-import Image from "next/image";
+
 import { useRouter } from "next/navigation";
 
 import { useForm } from "react-hook-form";
@@ -31,22 +31,16 @@ interface FormInputs {
 }
 
 export const ProductForm = ({ product, categories }: Props) => {
-  const {
-    handleSubmit,
-    register,
-    formState: { isValid },
-    getValues,
-    setValue,
-    watch,
-  } = useForm<FormInputs>({
-    defaultValues: {
-      ...product,
-      description: product.description ?? "",
-      tags: product.tags?.join(", ") ?? "",
-      sizes: product.sizes ?? [],
-      images: undefined,
-    },
-  });
+  const { handleSubmit, register, getValues, setValue, watch } =
+    useForm<FormInputs>({
+      defaultValues: {
+        ...product,
+        description: product.description ?? "",
+        tags: product.tags?.join(", ") ?? "",
+        sizes: product.sizes ?? [],
+        images: undefined,
+      },
+    });
 
   watch("sizes");
 

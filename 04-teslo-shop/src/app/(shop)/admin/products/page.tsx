@@ -1,10 +1,9 @@
-export const dynamic = true; // para q siempre se actualice cuando entre el user
+export const dynamic = "force-dynamic"; // para q siempre se actualice cuando entre el user
 
 // https://tailwindcomponents.com/component/hoverable-table
 import { getPaginatedProductsWithImages } from "@/actions";
 import { Pagination, ProductImage, Title } from "@/components";
 import { currencyFormat } from "@/utils";
-import Image from "next/image";
 
 import Link from "next/link";
 
